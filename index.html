@@ -201,7 +201,7 @@
     </div>
 
     <script>
-        // Replace with your actual OpenWeatherMap API key
+       
         const API_KEY = 'b364cc00e3e5ad4ba5dba0364a37d5bf'; 
 
         const searchBtn = document.getElementById('searchBtn');
@@ -210,7 +210,7 @@
         const historyList = document.getElementById('historyList');
         const consoleBox = document.getElementById('consoleBox');
 
-        // Utility to display logs on the screen and in the actual browser console
+       
         function logToConsole(message, isError = false) {
             console.log(message);
             const p = document.createElement('p');
@@ -222,10 +222,10 @@
             consoleBox.scrollTop = consoleBox.scrollHeight;
         }
 
-        // Load history on page startup
+       
         document.addEventListener('DOMContentLoaded', loadHistory);
 
-        // Search Button Event Listener
+       
         searchBtn.addEventListener('click', () => {
             const city = cityInput.value.trim();
             if (city) {
@@ -236,25 +236,25 @@
             }
         });
 
-        // Function to demonstrate the event loop and execution order
+        
         function executeWeatherSearch(city) {
             logToConsole('Sync Start');
 
-            // Microtask
+            
             Promise.resolve().then(() => logToConsole('Promise.then (Microtask)'));
 
-            // Macrotask
+            
             setTimeout(() => logToConsole('setTimeout (Macrotask)'), 0);
 
             logToConsole('[ASYNC] START fetching');
             
-            // Call the async API fetch function
+            
             fetchWeatherData(city);
 
             logToConsole('Sync End');
         }
 
-        // Async API Handling & Error Handling
+        
         async function fetchWeatherData(city) {
             try {
                 const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
@@ -262,7 +262,7 @@
                 const response = await fetch(url);
                 
                 if (!response.ok) {
-                    // Handle invalid city names or network errors
+                   
                     if (response.status === 404) {
                         throw new Error('City not found');
                     } else {
@@ -282,7 +282,7 @@
             }
         }
 
-        // Update the UI with fetched data
+        
         function displayWeather(data) {
             weatherDisplay.innerHTML = `
                 <div class="weather-grid">
@@ -295,15 +295,15 @@
             `;
         }
 
-        // Local Storage Management
+        
         function saveToHistory(city) {
             let history = JSON.parse(localStorage.getItem('weatherHistory')) || [];
             
-            // Prevent duplicates
+            
             if (!history.includes(city)) {
-                history.unshift(city); // Add to beginning
+                history.unshift(city); 
                 if (history.length > 6) {
-                    history.pop(); // Keep only recent 6 searches
+                    history.pop(); 
                 }
                 localStorage.setItem('weatherHistory', JSON.stringify(history));
                 loadHistory();
@@ -318,7 +318,7 @@
                 const li = document.createElement('li');
                 li.textContent = city;
                 
-                // Re-fetch data when a history item is clicked
+                
                 li.addEventListener('click', () => {
                     cityInput.value = city;
                     consoleBox.innerHTML = '';
@@ -330,4 +330,5 @@
         }
     </script>
 </body>
+
 </html>
