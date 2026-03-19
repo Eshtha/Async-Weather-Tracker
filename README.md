@@ -1,6 +1,7 @@
 # Async Weather Tracker 🌤️
 
-This is my lab submission for Web Dev II (Advanced JS & React)[cite: 2]. [cite_start]It's a weather tracking app built completely with plain HTML, CSS, and Vanilla JavaScript.No external UI frameworks like Bootstrap or Tailwind were used, keeping in line with the assignment restrictions.
+This is my lab submission for Web Dev II (Advanced JS & React)
+It's a weather tracking app built completely with plain HTML, CSS, and Vanilla JavaScript.No external UI frameworks like Bootstrap or Tailwind were used, keeping in line with the assignment restrictions.
 
 ## What it does
 The main focus of this project is to handle asynchronous programming and analyze how JavaScript behaves at runtime. 
